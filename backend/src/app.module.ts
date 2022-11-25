@@ -11,6 +11,8 @@ import { Role } from './models/role.model'
 import { UserRoles } from './models/user-roles.model'
 import { MailerModule } from '@nestjs-modules/mailer'
 import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter'
+import { QuestionaryModule } from './questionary/questionary.module';
+import { SendfileModule } from './sendfile/sendfile.module'
 
 
 @Module({
@@ -49,6 +51,8 @@ import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter'
         UserModule,
         AuthModule,
         RoleModule,
+        QuestionaryModule,
+        SendfileModule
 
     ],
 })
