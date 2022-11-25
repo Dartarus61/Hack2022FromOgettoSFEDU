@@ -4,9 +4,9 @@ import { CreateUserDto } from '../user/dto/create_user.dto'
 import { SwitchPassDto } from './dto/switchPass.dto'
 import { LoginDto } from './dto/login.dto'
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
-import { User } from 'backend/src/models/user.model'
 import { newPassDto } from './dto/newPass.dto'
-import { UpdateUserDto } from 'backend/src/user/dto/UpdateUser.dto'
+import { User } from 'src/models/user.model'
+import { UpdateUserDto } from 'src/user/dto/UpdateUser.dto'
 
 @ApiBearerAuth('JWT')
 @ApiTags('Авторизация')

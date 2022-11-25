@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserService } from 'backend/src/user/user.service';
+import { UserService } from 'src/user/user.service';
 import { CreateQuestDto } from './dto/createQuest.dto';
 
 @Injectable()

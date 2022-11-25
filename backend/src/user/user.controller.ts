@@ -1,12 +1,12 @@
 import { Body, Controller, Get, Headers, Param, Post, Put, Redirect, UseGuards } from '@nestjs/common'
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
-import { Roles } from 'backend/src/auth/roles-auth.decorator'
-import { RolesGuard } from 'backend/src/auth/roles.guard'
 import { ChangeRoleDto } from './dto/ChangeRole.dto'
 import { CreateUserDto } from './dto/create_user.dto'
 import { UpdateUserDto } from './dto/UpdateUser.dto'
 import { User } from '../models/user.model'
 import { UserService } from './user.service'
+import { Roles } from 'src/auth/roles-auth.decorator'
+import { RolesGuard } from 'src/auth/roles.guard'
 @ApiTags('Пользователи')
 @Controller('user')
 export class UserController {

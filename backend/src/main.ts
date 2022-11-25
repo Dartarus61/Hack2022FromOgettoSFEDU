@@ -12,7 +12,7 @@ async function bootstrap() {
 
     const config = new DocumentBuilder()
         .setTitle('OOP project')
-        .setDescription('The backend Node API description')
+        .setDescription('The  Node API description')
         .setVersion('1.0.1')
         .addTag('Dartar')
         .build()

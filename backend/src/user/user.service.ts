@@ -1,14 +1,14 @@
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/sequelize'
-import { RoleService } from 'backend/src/role/role.service'
 import { ChangeRoleDto } from './dto/ChangeRole.dto'
 import { CreateUserDto } from './dto/create_user.dto'
 import { UpdateUserDto } from './dto/UpdateUser.dto'
 import { User } from '../models/user.model'
-import { TokenService } from 'backend/src/token/token.service'
 import { profileUserDto } from './dto/profileUser.dto'
-import { Role } from 'backend/src/models/role.model'
 import { Op } from 'sequelize'
+import { Role } from 'src/models/role.model'
+import { RoleService } from 'src/role/role.service'
+import { TokenService } from 'src/token/token.service'
 
 @Injectable()
 export class UserService {
