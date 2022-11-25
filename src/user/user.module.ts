@@ -1,5 +1,4 @@
 import { forwardRef, Module } from '@nestjs/common'
-import { JwtService } from '@nestjs/jwt'
 import { SequelizeModule } from '@nestjs/sequelize'
 import { AuthModule } from 'src/auth/auth.module'
 import { MailModule } from 'src/mail/mail.module'

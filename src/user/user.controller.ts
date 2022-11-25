@@ -12,15 +12,6 @@ import { UserService } from './user.service'
 export class UserController {
     constructor(private UserService: UserService) {}
 
-    @ApiOperation({ summary: 'Создание пользователя' })
-    @ApiResponse({ status: 201, type: User })
-    @UseGuards(RolesGuard)
-    @Roles('USER')
-    @Post('/create')
-    create(@Body() Dto: CreateUserDto) {
-        return this.UserService.createUser(Dto)
-    }
-
     @Get('/activ/:value')
     @Redirect('http://localhost:3000/login')
     async activation(@Param('value') value: string) {
