@@ -8,13 +8,16 @@ export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const navigate = useNavigate();
 
-	const profile = async (token) => {
+	const loadSingleProfile = async (token) => {
 		await api
 			.get("/user/profile", {
 				headers: { Authorization: `Bearer ${token}` },
 			})
 			.then(({ data }) => {
 				setUser(data);
+			})
+			.catch((e) => {
+				console.error(e);
 			});
 	};
 
@@ -23,30 +26,43 @@ export const AuthProvider = ({ children }) => {
 			.get("/auth/refresh", {
 				headers: { Authorization: `Bearer ${token}` },
 			})
-			.then(({ data }) => {
-				profile(token);
+			.then(() => {
+				loadSingleProfile(token);
+			})
+			.catch((e) => {
+				console.error(e);
 			});
 	};
 
-	const signin = async (userData, cb) => {
-		await api.post("/auth/login", userData).then(({ data }) => {
-			if (!!data.user.isActivated) {
-				setUser(userData);
-				localStorage.setItem("token", data.token);
-				cb();
-			} else {
-				localStorage.clear();
-				setUser(null);
-				navigate("/validate");
-			}
-		});
+	const signin = async (authData, cb) => {
+		await api
+			.post("/auth/login", authData)
+			.then(({ data }) => {
+				if (!!data.user.isActivated) {
+					localStorage.setItem("token", data.token);
+					loadSingleProfile(localStorage.getItem("token"));
+					cb();
+				} else {
+					localStorage.clear();
+					setUser(null);
+					navigate("/validate");
+				}
+			})
+			.catch((e) => {
+				console.error(e);
+			});
 	};
 	const signup = async (newUser, cb) => {
-		await api.post("/auth/registration", newUser).then(({ data }) => {
-			localStorage.setItem("token", data.token);
-			setUser(newUser.email);
-			navigate("/validate");
-		});
+		await api
+			.post("/auth/registration", newUser)
+			.then(({ data }) => {
+				localStorage.setItem("token", data.token);
+				setUser(newUser.email);
+				navigate("/validate");
+			})
+			.catch((e) => {
+				console.error(e);
+			});
 	};
 	const signout = () => {
 		localStorage.clear();
