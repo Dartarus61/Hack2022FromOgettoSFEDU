@@ -1,0 +1,100 @@
+.header {
+    width: 100%;
+    background-color: #000000;
+    font-family: $Montserrat;
+    font-weight: 700;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.header__container {
+    width: calc(100% - 120px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.header__logo-img {
+    width: 130px;
+    height: 31px;
+    display: block;
+    padding: 23px 40px;
+}
+
+.header__link-list {
+    display: flex;
+}
+
+.header__link {
+    display: block;
+    color: #ffffff;
+    padding: 25px 25px 28px;
+
+    &:hover {
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        width: 110%;
+        height: 1px;
+        background: radial-gradient(100% 108900% at 100% -150%, rgba(234, 234, 233, 0) 0%, #F9DD4B 100%);
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    &:hover::after {
+        opacity: 1;
+        transform: translateX(0px);
+        transition: all 0.7s ease 0s;
+    }
+
+    &--play {
+        background-color: #FFDD00;
+        color: #252525;
+    }
+
+    &--play::after {
+        background: radial-gradient(100% 108900% at 100% -150%, #F9DD4B 0%, #eaeae900 100%);
+    }
+}
+
+.header__user-menu {
+    margin-left: auto;
+}
+
+.header__user-item {
+    display: block;
+    color: #ffffff;
+    padding: 25px 25px 28px;
+
+    &--logout {
+        background-image: url('../images/svg/logout-icon.svg');
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    &--logout:hover {
+        opacity: 0.7;
+    }
+
+    &--logout::after {
+        content: '';
+        display: block;
+        width: 33px;
+        height: 1px;
+        background: radial-gradient(100% 108900% at 100% -150%, rgba(234, 234, 233, 0) 0%, #F9DD4B 100%);
+        margin-top: 32px;
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    &--logout:hover::after {
+        opacity: 1;
+        transform: translateX(-5px);
+        transition: all 0.7s ease 0s;
+    }
+}
