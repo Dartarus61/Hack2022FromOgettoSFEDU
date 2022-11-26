@@ -28,6 +28,8 @@ export class AuthService {
   ) {}
 
   async registration(userDto: CreateUserDto) {
+    if (!userDto.email.includes('@oggettoweb.com'))
+      throw new HttpException('Некорпоративная почта', HttpStatus.BAD_REQUEST);
     const candidate = await this.userService.getUserByEmail(userDto.email);
     if (candidate) {
       throw new HttpException(
