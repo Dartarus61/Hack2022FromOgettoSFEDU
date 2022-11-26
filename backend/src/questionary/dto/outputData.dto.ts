@@ -12,4 +12,10 @@ export class OutputDataDto {
     description: 'Варианты ответов',
   })
   options: string[];
+
+  @ApiProperty({
+    example: 'проверяю людей на знание технологий',
+    description: 'Факты о сотруднике',
+  })
+  fact: string;
 }
