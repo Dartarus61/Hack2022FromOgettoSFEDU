@@ -19,7 +19,7 @@ export class CreateQuestDto {
   @IsString({ message: 'Должно быть строкой' })
   readonly city: string;
   @ApiProperty({
-    example: 'Я люблю пить пиво',
+    example: 'Учу дружбе сервера',
     description: 'Факты о своей работе',
   })
   @IsString({ message: 'Должно быть строкой' })

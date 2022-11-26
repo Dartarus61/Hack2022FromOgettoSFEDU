@@ -69,6 +69,7 @@ export class QuestionaryService {
           photo: `${process.env.URL_FOR_IMG}${quest.photoPath}`,
           fact: quest.fact,
           options,
+          answer: quest.position,
         };
       }),
     );
