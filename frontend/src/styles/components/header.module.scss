@@ -1,11 +1,11 @@
 .header {
-	width: 100%;
 	background-color: #000000;
-	font-family: Montserrat;
-	font-weight: 700;
-	font-size: 20px;
 	height: 85px;
-	color: #ffffff;
+	&_action {
+		font-weight: 500;
+		font-size: 20px;
+		color: #ffffff;
+	}
 	display: flex;
 	align-items: center;
 }
@@ -19,96 +19,26 @@
 }
 
 .header__logo {
-	display: flex;
-	align-items: center;
 	&Img {
 		width: 45px;
-		display: block;
 	}
 }
-
-.header__link_list {
-	display: flex;
-}
-
-.header__link {
-	display: block;
-	color: #ffffff;
-	padding: 25px 25px 28px;
-
-	&:hover {
-		box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-	}
-
-	&::after {
-		content: "";
-		display: block;
-		width: 110%;
-		height: 1px;
-		background: radial-gradient(
-			100% 108900% at 100% -150%,
-			rgba(234, 234, 233, 0) 0%,
-			#f9dd4b 100%
-		);
-		opacity: 0;
-		transform: translateX(30px);
-	}
-
-	&:hover::after {
-		opacity: 1;
-		transform: translateX(0px);
-		transition: all 0.7s ease 0s;
-	}
-}
-
-.header__user_menu {
+.header_menu {
 	display: flex;
 	align-items: center;
-	gap: 20px;
+	gap:20px;
 }
 
-.header__user {
+.user_menu {
+	width: 60px;
+	height: 60px;
+	border: 1px solid #f9dd4b;
 	border-radius: 50%;
-	width: 50px;
-	height: 50px;
-	border:3px solid #f9dd4b;
-}
-
-.header__user_item {
-	display: block;
-	color: #ffffff;
-	padding: 25px 25px 28px;
-	font-size: 20px;
-	&Logout {
-		background: none;
-		background-image: url("../../assets/images/svg/logout-icon.svg");
-		background-repeat: no-repeat;
-		background-position: 50% 50%;
-	}
-
-	&Logout:hover {
-		opacity: 0.7;
-		transition: all 0.7s ease 0s;
-	}
-
-	&Logout::after {
-		content: "";
-		display: block;
-		width: 33px;
-		height: 1px;
-		background: radial-gradient(
-			100% 108900% at 100% -150%,
-			rgba(234, 234, 233, 0) 0%,
-			#f9dd4b 100%
-		);
-		margin-top: 32px;
-		opacity: 0;
-		transform: translateX(10px);
-	}
-
-	&Logout:hover::after {
-		opacity: 1;
-		transform: translateX(-5px);
-		transition: all 0.7s ease 0s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	& img {
+		height: 100%;
 	}
 }

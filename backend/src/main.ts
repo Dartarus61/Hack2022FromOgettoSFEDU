@@ -11,9 +11,9 @@ async function bootstrap() {
     })
 
     const config = new DocumentBuilder()
-        .setTitle('OOP project')
-        .setDescription('The  Node API description')
-        .setVersion('1.0.1')
+        .setTitle('Oggetto')
+        .setDescription('API Oggetto quiz')
+        .setVersion('1.1.2')
         .addTag('Dartar')
         .build()
     const document = SwaggerModule.createDocument(app, config)

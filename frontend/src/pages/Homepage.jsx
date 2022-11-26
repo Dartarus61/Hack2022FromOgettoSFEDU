@@ -8,19 +8,18 @@ import tick from "../assets/images/circleTick.svg";
 import brain from "../assets/images/brain.svg";
 import time from "../assets/images/time.svg";
 
-import s from "../styles/components/homepage.module.scss";
+import s from "../styles/pages/homepage.module.scss";
 import NavigateButton from "../components/NavigateButton";
 
 const Homepage = () => {
 	const { signout, user, refresh } = useAuth();
+
 	useEffect(() => {
 		const token = localStorage.getItem("token");
-		if (!token) {
-			signout();
-		} else if (!user && !!token) {
-			refresh(token);
-		}
+		if (!token) signout();
+		if (token && !user) refresh(token);
 	}, []);
+
 	return (
 		<div className={s.homepage}>
 			<div className={s.preview}>

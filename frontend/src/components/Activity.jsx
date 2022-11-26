@@ -1,5 +1,5 @@
 import React from "react";
-import s from "../styles/components/homepage.module.scss";
+import s from "../styles/pages/homepage.module.scss";
 
 const Activity = ({ img, title, subtitle }) => {
 	return (

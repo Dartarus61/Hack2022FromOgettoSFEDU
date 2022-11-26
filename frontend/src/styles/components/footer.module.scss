@@ -1,58 +1,66 @@
 .footer {
-    background-color: #000000;
-    font-family: Montserrat;
-    color: #ffffff;
+	background-color: #000000;
+	font-family: Montserrat;
+	color: #ffffff;
+	padding: 20px 0;
 }
 
 .footer__container {
-    width: calc(100% - 120px);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+	width: calc(100% - 120px);
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.footer__office-item {
-    padding: 30px 0 20px;
-    display: flex;
-    align-items: center;
+.footer__office_item {
+	padding: 30px 0 20px;
+	display: flex;
+	align-items: center;
 
-    &--tagan::before {
-        content: '';
-        display: block;
-        position: relative;
-        width: 48px;
-        height: 48px;
-        margin-right: 26px;
-        background-image: url("../images/svg/tagan-office.svg");
-    }
+	&__tagan {
+		display: flex;
+		align-items: center;
+		&::before {
+			content: "";
+			display: block;
+			position: relative;
+			width: 48px;
+			height: 48px;
+			margin-right: 26px;
+			background-image: url("../../assets/images/svg/tagan-office.svg");
+		}
+	}
 
-    &--rostov::before {
-        content: '';
-        display: block;
-        position: relative;
-        width: 48px;
-        height: 48px;
-        margin-right: 26px;
-        background-image: url("../images/svg/rostov-office.svg");
-    }
+	&__rostov {
+		display: flex;
+		align-items: center;
+		&::before {
+			content: "";
+			display: block;
+			position: relative;
+			width: 48px;
+			height: 48px;
+			margin-right: 26px;
+			background-image: url("../../assets/images/svg/rostov-office.svg");
+		}
+	}
 }
 
-.footer__office-title {
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 700;
+.footer__office_title {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 700;
 }
 
-.footer__office-address {
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 400;
+.footer__office_address {
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 400;
 }
 
-.footer__contact-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: end;
-    padding: 30px 0;
+.footer__contact_block {
+	display: flex;
+	flex-direction: column;
+	text-align: end;
 }

@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
 				headers: { Authorization: `Bearer ${token}` },
 			})
 			.then(({ data }) => {
+				console.log(data);
 				setUser(data);
 			})
 			.catch((e) => {

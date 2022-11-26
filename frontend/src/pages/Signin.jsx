@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const Signin = () => {
 	};
 
 	return (
-		<>
+		<div className={s.signin}>
 			<form onSubmit={handlesubmit}>
 				<input
 					type="text"
@@ -44,7 +44,7 @@ const Signin = () => {
 				Already has an account?
 				<Link to="/signup"> Sign up.</Link>
 			</div>
-		</>
+		</div>
 	);
 };
 

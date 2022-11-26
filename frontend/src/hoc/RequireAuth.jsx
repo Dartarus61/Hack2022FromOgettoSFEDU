@@ -1,9 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
+import { useEffect } from "react";
 
 const RequireAuth = ({ children }) => {
-	const location = useLocation;
-	const { user } = useAuth();
+	const { signout, user, refresh } = useAuth();
+
 	if (!user && !localStorage.getItem("token")) {
 		return <Navigate to="/" />;
 	}

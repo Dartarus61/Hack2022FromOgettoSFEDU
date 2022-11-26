@@ -12,6 +12,10 @@ a:visited {
 	cursor: pointer;
 }
 
+p {
+	margin: 0;
+}
+
 button {
 	text-decoration: none;
 	border: none;
