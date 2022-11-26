@@ -70,6 +70,7 @@ export class QuestionaryService {
           fact: quest.fact,
           options,
           answer: quest.position,
+          employee: `${quest.surname} ${quest.name} ${quest.middlename}`,
         };
       }),
     );

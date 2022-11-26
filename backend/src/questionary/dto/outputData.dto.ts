@@ -18,6 +18,13 @@ export class OutputDataDto {
     description: 'Факты о сотруднике',
   })
   fact: string;
+
   @ApiProperty({ example: 'worker', description: 'Правильный ответ' })
   answer: string;
+
+  @ApiProperty({
+    example: 'Иван Иванов Иванович',
+    description: 'ФИО сотрудника',
+  })
+  employee: string;
 }

@@ -31,6 +31,18 @@ export class Quest extends Model<Quest> {
   })
   id: number;
 
+  @ApiProperty({ example: 'Bob', description: 'Имя пользователя' })
+  @Column({ type: DataType.STRING, allowNull: false })
+  name: string;
+
+  @ApiProperty({ example: 'Clemente', description: 'Фамилия пользователя' })
+  @Column({ type: DataType.STRING, allowNull: false })
+  surname: string;
+
+  @ApiProperty({ example: 'Иванович', description: 'Отчество пользователя' })
+  @Column({ type: DataType.STRING, allowNull: false })
+  middlename: string;
+
   @ApiProperty({
     example: 'sdg456-ag45-sdfsd4-ddfg4.jpg',
     description: 'название фото',
