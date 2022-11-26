@@ -6,6 +6,7 @@ import { User } from 'src/models/user.model';
 import { UserService } from 'src/user/user.service';
 import { CreateQuizDto } from './dto/createQuiz.dto';
 import { CreateQuestDto } from './dto/generateQuest.dto';
+import { UpdateUserDto } from './dto/UpdateUser.dto';
 
 @Injectable()
 export class QuestionaryService {
@@ -95,6 +96,21 @@ export class QuestionaryService {
     }
 
     return uniqueAnswer.sort((a, b) => a.length - b.length);
+  }
+
+  async updateUser(dto: UpdateUserDto) {
+    const userQuest = await this.questRepository.findOne({
+      where: { userId: dto.id },
+    });
+
+    if (userQuest) {
+      const result = await userQuest.update({ ...dto });
+      return result;
+    }
+    throw new HttpException(
+      'Анкета пользователя не найдена',
+      HttpStatus.NOT_FOUND,
+    );
   }
 }
 

@@ -8,7 +8,7 @@ import {
 import { InjectModel } from '@nestjs/sequelize';
 import { ChangeRoleDto } from './dto/ChangeRole.dto';
 import { CreateUserDto } from './dto/create_user.dto';
-import { UpdateUserDto } from './dto/UpdateUser.dto';
+import { UpdateUserDto } from '../questionary/dto/UpdateUser.dto';
 import { User } from '../models/user.model';
 import { profileUserDto } from './dto/profileUser.dto';
 import { Op } from 'sequelize';
@@ -47,7 +47,9 @@ export class UserService {
   }
 
   async getAll() {
-    const users = await this.userRepository.findAll({ include: { all: true } });
+    const users = await this.userRepository.findAll({
+      where: { isActivated: false },
+    });
     return users;
   }
 

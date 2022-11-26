@@ -3,11 +3,14 @@ import {
   Controller,
   Get,
   Post,
+  Put,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Quest } from 'src/models/quest.model';
+import { UpdateUserDto } from 'src/questionary/dto/UpdateUser.dto';
 import { CreateQuizDto } from './dto/createQuiz.dto';
 import { CreateQuestDto } from './dto/generateQuest.dto';
 import { OutputDataDto } from './dto/outputData.dto';
@@ -34,5 +37,12 @@ export class QuestionaryController {
   @Get('/getqa')
   GenerateQA(@Body() userData: CreateQuizDto) {
     return this.questService.generateQuest(userData);
+  }
+
+  @ApiOperation({ summary: 'Изменение данных пользователя' })
+  @ApiResponse({ status: 200, type: Quest })
+  @Put('/updata')
+  ChangeData(@Body() dto: UpdateUserDto) {
+    return this.questService.updateUser(dto);
   }
 }

@@ -16,7 +16,7 @@ import { UserService } from 'src/user/user.service';
 import { TokenService } from 'src/token/token.service';
 import { MailService } from 'src/mail/mail.service';
 import { User } from 'src/models/user.model';
-import { UpdateUserDto } from 'src/user/dto/UpdateUser.dto';
+import { UpdateUserDto } from 'src/questionary/dto/UpdateUser.dto';
 
 @Injectable()
 export class AuthService {
@@ -43,7 +43,7 @@ export class AuthService {
       acticationLink,
     });
 
-    this.mailService.sendActivation(user.email, user.acticationLink)
+    this.mailService.sendActivation(user.email, user.acticationLink);
 
     return this.generateToken(user);
   }

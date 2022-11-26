@@ -12,7 +12,6 @@ import {
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ChangeRoleDto } from './dto/ChangeRole.dto';
 import { CreateUserDto } from './dto/create_user.dto';
-import { UpdateUserDto } from './dto/UpdateUser.dto';
 import { User } from '../models/user.model';
 import { UserService } from './user.service';
 import { Roles } from 'src/auth/roles-auth.decorator';
@@ -22,11 +21,12 @@ import { RolesGuard } from 'src/auth/roles.guard';
 export class UserController {
   constructor(private UserService: UserService) {}
 
+  @UseGuards(RolesGuard)
+  @Roles('ADMIN')
   @Get('/activ/:value')
-  @Redirect('http://localhost:3000/login')
   async activation(@Param('value') value: string) {
     const fuser = await this.UserService.activate(value);
-    return { url: 'http://localhost:3000/' };
+    return fuser;
   }
 
   @ApiOperation({ summary: 'Поиск пользователя по почте' })
