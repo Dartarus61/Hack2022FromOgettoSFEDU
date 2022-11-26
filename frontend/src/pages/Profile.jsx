@@ -1,4 +1,4 @@
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -19,11 +19,6 @@ const Profile = () => {
 		<div>
 			<h1>Create a post</h1>
 			<h3>{user ? user.name + " " + user.surname : ""}</h3>
-			<button
-				onClick={() => signout(() => navigate("/", { replace: true }))}
-			>
-				Log Out
-			</button>
 		</div>
 	);
 };

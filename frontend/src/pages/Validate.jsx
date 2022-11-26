@@ -1,5 +1,5 @@
-import React, { useAuth } from "../hooks/useAuth";
-import { Navigate  } from "react-router-dom";
+import React, { useAuth } from "../context/useAuth";
+import { Navigate } from "react-router-dom";
 
 const Validate = () => {
 	const { user } = useAuth();
