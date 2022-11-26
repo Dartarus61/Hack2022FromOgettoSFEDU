@@ -1,4 +1,5 @@
-import { Body, Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { CreateQuestDto } from './dto/generateQuest.dto';
 import { QuestionaryService } from './questionary.service';
 
 
@@ -6,8 +7,8 @@ import { QuestionaryService } from './questionary.service';
 export class QuestionaryController {
 constructor (private questService: QuestionaryService) {}
 
-    @Get('/createquest')
-    Createquest(@Body('count') questDto) {
-        return this.questService.createQuest(questDto)
+    @Post('/createquest')
+    Createquest(@Body() questData: CreateQuestDto) {
+        return this.questService.createQuest(questData)
     }
 }

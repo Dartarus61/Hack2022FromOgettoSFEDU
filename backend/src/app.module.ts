@@ -13,6 +13,9 @@ import { MailerModule } from '@nestjs-modules/mailer'
 import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter'
 import { QuestionaryModule } from './questionary/questionary.module';
 import { SendfileModule } from './sendfile/sendfile.module'
+import { FilesModule } from './files/files.module'
+import { Quest } from './models/quest.model'
+import { FileFolder } from './models/file.model'
 
 
 @Module({
@@ -44,7 +47,7 @@ import { SendfileModule } from './sendfile/sendfile.module'
             username: process.env.DB_USER || 'postgres',
             password: process.env.DB_PASSWORD || 'postgres',
             database: process.env.DB_NAME || 'ogetto',
-            models: [User, Role, UserRoles],
+            models: [User, Role, UserRoles, Quest, FileFolder],
             autoLoadModels: true,
             /* sync: { force: true }, */
         }),
@@ -52,7 +55,8 @@ import { SendfileModule } from './sendfile/sendfile.module'
         AuthModule,
         RoleModule,
         QuestionaryModule,
-        SendfileModule
+        SendfileModule,
+        FilesModule
 
     ],
 })
