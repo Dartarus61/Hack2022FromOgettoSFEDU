@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../context/useAuth";
 import { Link } from "react-router-dom";
 
 const Signin = () => {
