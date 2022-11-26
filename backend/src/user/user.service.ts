@@ -65,7 +65,9 @@ export class UserService {
   }
 
   async getUserById(id: number) {
-    const user = await this.userRepository.findByPk(id, { include: [Role] });
+    const user = await this.userRepository.findByPk(id, {
+      include: { all: true },
+    });
     if (user) return user;
     throw new HttpException('пользователь не найден', HttpStatus.NOT_FOUND);
   }
@@ -96,11 +98,15 @@ export class UserService {
     delete decoded.exp;
 
     let userProfileData = await this.getUserById(decoded.id);
+    const temp = JSON.stringify(userProfileData);
+    userProfileData = JSON.parse(temp);
+    console.log(userProfileData.questId);
 
     let userObject = {
       ...decoded,
       name: userProfileData.name,
       surname: userProfileData.surname,
+      photo: `${process.env.URL_FOR_IMG}${userProfileData.questId.photoPath}`,
     };
     userObject.roles = userObject.roles.map((el) => {
       return el.value;
