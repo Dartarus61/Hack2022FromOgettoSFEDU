@@ -1,0 +1,24 @@
+.register {
+    height: 100%;
+    background-color: #252525;
+}
+
+.register__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: calc(100% - 240px);
+    margin: 0 auto;
+    background-color: #ffffff;
+    height: 100%;
+}
+
+.register__title {
+    display: block;
+    font-family: $Montserrat;
+    font-size: 36px;
+    font-weight: 700;
+    padding-bottom: 40px;
+}

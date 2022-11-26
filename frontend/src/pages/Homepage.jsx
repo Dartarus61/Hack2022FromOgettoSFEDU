@@ -1,11 +1,13 @@
 import React from "react";
-import { CustomLink } from "../components/CustomLink";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
 	return (
 		<>
-			<CustomLink to="auth">Auth</CustomLink>
-			<div>Homepage</div>
+			<Link to="signup">Sign up</Link>
+			<br/>
+			<Link to="signin">Sign in</Link>
+			<div>Well come</div>
 		</>
 	);
 };

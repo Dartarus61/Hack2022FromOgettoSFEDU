@@ -43,7 +43,7 @@ export class AuthService {
       acticationLink,
     });
 
-    //this.mailService.sendActivation(user.email, user.acticationLink)
+    this.mailService.sendActivation(user.email, user.acticationLink)
 
     return this.generateToken(user);
   }

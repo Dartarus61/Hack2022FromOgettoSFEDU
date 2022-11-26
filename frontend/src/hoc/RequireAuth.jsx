@@ -4,8 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 const RequireAuth = ({ children }) => {
 	const location = useLocation;
 	const { user } = useAuth();
-	console.log(user);
-	if (!user) {
+	if (!user && !localStorage.getItem("token")) {
 		return <Navigate to="/" />;
 	}
 

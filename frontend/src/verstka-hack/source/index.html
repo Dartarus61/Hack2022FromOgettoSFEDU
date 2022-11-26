@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="#" class="header__logo">
+        <img class="header__logo-img" src="images/logo.png" alt="Логотип компании">
+      </a>
+      <ul class="header__link-list">
+        <li class="header__link-item">
+          <a class="header__link" href="#">Играть</a>
+        </li>
+        <li class="header__link-item">
+          <a class="header__link" href="#">О компании</a>
+        </li>
+        <li class="header__link-item">
+          <a class="header__link" href="#">Об игре</a>
+        </li>
+      </ul>
+      <div class="header__user-menu">
+        <a class="header__user-item visually-hidden" href="">Войти</a>
+        <a class="header__user-item header__user-item--logout" href=""></a>
+      </div>
+    </div>
+  </header>
+  <section class="sing-in visually-hidden">
+    <div class="sing-in__container">
+      <h1 class="sing-in__title">Авторизация</h1>
+      <div class="sing-in__form">
+        <form class="login__form" method="post" action="#">
+          <input class="login__field-input" type="email" placeholder="Логин">
+          <input class="login__field-input" type="password" placeholder="Пароль">
+          <div class="login__btn-block">
+            <button class="login__submit-btn" type="submit">Войти</button>
+            <a class="login__sing-up-btn" href="#">Зарегистрироваться</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="register visually-hidden">
+    <div class="register__container">
+      <h1 class="register__title">Регистрация</h1>
+      <div class="register__form">
+        <form class="sing-up__form" action="#" method="post">
+          <input class="sing-up__field-input" type="text" name="" id="" placeholder="Имя">
+          <input class="sing-up__field-input" type="text" name="" id="" placeholder="Фамилия">
+          <input class="sing-up__field-input" type="email" name="" id="" placeholder="Email">
+          <input class="sing-up__field-input" type="password" name="" id="" placeholder="Пароль">
+          <input class="sing-up__field-input" type="password" name="" id="" placeholder="Повторите пароль">
+          <div class="sing-up__btn-block">
+            <button class="submit-btn" type="submit">Зарегистрироваться</button>
+            <a class="sing-up__singin-btn" href="">У меня есть аккаунт</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="questionary">
+    <div class="questionary__container">
+      <h2 class="questionary__title">Анкета</h2>
+      <form class="questionary__form q-form" action="#" method="post">
+        <input class="q-form__field-input" type="text" name="" id="" placeholder="Фамилия">
+        <input class="q-form__field-input" type="text" name="" id="" placeholder="Имя">
+        <input class="q-form__field-input" type="text" name="" id="" placeholder="Отчество">
+        <select class="q-form__field-select" name="" id="">
+          <option value="" selected>Дизайнер</option>
+          <option value="">HR</option>
+          <option value="">Менеджер</option>
+        </select>
+        <div class="q-form__format">
+          <p class="q-form__format-text">Формат работы:</p>
+          <div class="q-form__format-radio">
+            <label class="q-form__radio-label">
+              <input class="q-form__radio-btn" type="radio" name="format" id="" checked>
+              Очный
+            </label>
+            <label class="q-form__radio-label">
+              <input class="q-form__radio-btn" type="radio" name="format" id="">
+              Удаленный
+            </label>
+          </div>
+        </div>
+        <div class="q-form__office">
+          <select class="q-form__office-select" name="" id="">
+            <option value="">Ростов-на-Дону</option>
+            <option value="">Таганрог</option>
+          </select>
+        </div>
+        <div class="q-form__city visually-hidden">
+          <input class="field-input" type="text" name="" id="" placeholder="Город проживания:">
+        </div>
+        <div class="q-form__facts">
+          <textarea class="q-form__textarea" name="" id="" cols="20" rows="10" placeholder="Факты о работе"></textarea>
+        </div>
+        <div class="q-form__upload-photo">
+          <div class="q-form__photo-preview">
+            <img class="q-form__image-preview" src="./images/photo-preview.png" alt="Превью фото">
+          </div>
+          <div class="q-form__upload-field">
+            <input class="q-form__input-photo visually-hidden" type="file" name="" id="input-photo">
+            <label class="q-form__input-label" for="input-photo">Загрузить фото</label>
+          </div>
+        </div>
+        <div class="q-form__btn-block">
+          <button type="submit" class="q-form__submit-btn">Отправить</button>
+          <button type="reset" class="q-form__submit-btn">Сбросить</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="profile visually-hidden">
+    <div class="profile__container">
+      <h3 class="profile__title">Общая информация</h3>
+      <div class="profile__avatar">
+        <div class="profile__avatar-photo">
+          <img class="profile__avatar-img" src="" alt="">
+        </div>
+        <p class="profile__avatar-fio">Петров Иван Васильевич</p>
+      </div>
+      <div class="profile__info">
+        <div class="profile__info-str">
+          <p class="profile__info-key">Должность:</p>
+          <p class="profile__info-value">Дизайнер</p>
+        </div>
+        <div class="profile__info-str">
+          <p class="profile__info-key">Город:</p>
+          <p class="profile__info-value">Ростов-на-Дону</p>
+        </div>
+        <div class="profile__info-str">
+          <p class="profile__info-key">Формат работы:</p>
+          <p class="profile__info-value">Очный</p>
+        </div>
+        <div class="profile__info-str">
+          <p class="profile__info-key">Офис:</p>
+          <p class="profile__info-value">Дизайнер</p>
+        </div>
+        <div class="profile__info-str">
+          <p class="profile__info-key">Факты о работе:</p>
+          <p class="profile__info-value">Очень много ест, мало спит, синяки под глазми.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__offices-block">
+        <div class="footer__office-item footer__office-item--tagan">
+          <div class="footer__office-text">
+            <p class="footer__office-title">Office in Taganrog</p>
+            <p class="footer__office-address">89B Petrovskaya street, Andreevsky mall</p>
+          </div>
+        </div>
+        <div class="footer__office-item footer__office-item--rostov">
+          <div class="footer__office-text">
+            <p class="footer__office-title">Office in Rostov-on-Don</p>
+            <p class="footer__office-address">6 Nizhnebulvarnaya street, "5 Seas" business centre</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__contact-block">
+        <a class="footer__number" href="tel:+7 495 587-41-27">+7 495 587-41-27</a>
+        <p class="footer__email">hello@oggettoweb.com</p>
+        <p class="footer__copyright">© Oggetto, 2008–2022. Online stores and selling applications.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
