@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { CustomLink } from "./CustomLink";
 
 const Layout = () => {
 	return (
 		<>
 			<header>
-				<CustomLink to="/">Home</CustomLink>
+				LOGO
 			</header>
 
 			<main className="container">
@@ -13,7 +12,7 @@ const Layout = () => {
 			</main>
 
 			<footer className="container">
-				&copy; ReactRouter Tutorials 2022
+				&copy; D-bilding & Co.
 			</footer>
 		</>
 	);
