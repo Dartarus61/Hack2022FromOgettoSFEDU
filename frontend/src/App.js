@@ -29,10 +29,17 @@ function App() {
 								</RequireAuth>
 							}
 						/>
+						<Route
+							path="edit"
+							element={
+								<RequireAuth>
+									<EditProfile />
+								</RequireAuth>
+							}
+						/>
 						<Route path="signin" element={<Signin />} />
 						<Route path="signup" element={<Signup />} />
 						<Route path="validate" element={<Validate />} />
-						<Route path="edit" element={<EditProfile />} />
 						<Route path="*" element={<Notfoundpage />} />
 					</Route>
 				</Routes>

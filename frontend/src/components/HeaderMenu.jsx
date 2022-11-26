@@ -20,7 +20,7 @@ const HeaderMenu = ({ s }) => {
 					className={s.header_action}
 					onClick={() => navigate("/signin")}
 				>
-					Войти
+					Регистрация
 				</button>
 			) : localStorage.getItem("token") &&
 			  !location.pathname === "/profile" ? (

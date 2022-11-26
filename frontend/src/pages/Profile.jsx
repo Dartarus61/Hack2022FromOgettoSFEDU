@@ -16,7 +16,7 @@ const Profile = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className={s.profile}>
 			<h1>Create a post</h1>
 			<h3>{user ? user.name + " " + user.surname : ""}</h3>
 		</div>

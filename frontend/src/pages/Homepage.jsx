@@ -9,7 +9,7 @@ import brain from "../assets/images/brain.svg";
 import time from "../assets/images/time.svg";
 
 import s from "../styles/pages/homepage.module.scss";
-import NavigateButton from "../components/NavigateButton";
+import CustomButton from "../components/CustomButton";
 
 const Homepage = () => {
 	const { signout, user, refresh } = useAuth();
@@ -28,9 +28,10 @@ const Homepage = () => {
 						<span className={s.preview__title}>ВИКТОРИНА</span>
 						<p className={s.preview__subtitle}>
 							интерактив для новых сотрудников в <br /> формате
-							игры на запоминание коллег
+							игры на запоминание <br />
+							коллег
 						</p>
-						<NavigateButton text="Играть" />
+						<CustomButton text="Играть" path="/signin" />
 					</div>
 					<img src={elipse} className={s.preview__photo} alt="" />
 				</div>

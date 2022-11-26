@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
+import s from "../styles/pages/auth.module.scss";
 
 const Signup = () => {
 	const navigate = useNavigate();
@@ -25,41 +26,57 @@ const Signup = () => {
 		e.preventDefault();
 		signup(values, () => navigate("/profile", { replace: true }));
 	};
-
 	return (
-		<>
-			<form onSubmit={handlesubmit}>
+		<div className={s.auth}>
+			<span className={s.auth_title}>Авторизация</span>
+			<form className={s.auth_form} onSubmit={handlesubmit}>
 				<input
+					className={s.auth_form_input}
 					type="text"
 					name="email"
-					value={values.name}
-					onChange={handleChange}
-				/>
-				<input
-					type="text"
-					name="password"
-					value={values.surname}
-					onChange={handleChange}
-				/>
-				<input
-					type="text"
-					name="email"
+					placeholder="E-mail"
 					value={values.email}
 					onChange={handleChange}
 				/>
 				<input
+					className={s.auth_form_input}
 					type="text"
 					name="password"
+					placeholder="Пароль"
 					value={values.password}
 					onChange={handleChange}
 				/>
-				<button type="submit">submit</button>
+				<input
+					className={s.auth_form_input}
+					type="text"
+					name="name"
+					placeholder="Имя"
+					value={values.email}
+					onChange={handleChange}
+				/>
+				<input
+					className={s.auth_form_input}
+					type="text"
+					name="surname"
+					placeholder="Фамилия"
+					value={values.password}
+					onChange={handleChange}
+				/>
+				<div className={s.auth_form_actions}>
+					<button
+						className={s.action_button}
+						onClick={() => {
+							navigate("/signin");
+						}}
+					>
+						Создать аккаунт
+					</button>
+					<button type="submit" className={s.action_button}>
+						Войти
+					</button>
+				</div>
 			</form>
-			<div>
-				Already has an account?
-				<Link to="/signin"> Sign in.</Link>
-			</div>
-		</>
+		</div>
 	);
 };
 
