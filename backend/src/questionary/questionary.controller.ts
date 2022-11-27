@@ -43,9 +43,13 @@ export class QuestionaryController {
 
   @ApiOperation({ summary: 'Изменение данных пользователя' })
   @ApiResponse({ status: 200, type: Quest })
+  @UseInterceptors(FileInterceptor('file'))
   @Put('/updata')
-  ChangeData(@Body() dto: UpdateUserDto) {
-    return this.questService.updateUser(dto);
+  ChangeData(
+    @Body() dto: UpdateUserDto,
+    @UploadedFile() file?: Express.Multer.File,
+  ) {
+    return this.questService.updateUser(dto, file);
   }
 
   @ApiOperation({ summary: 'Получение списка лидеров' })

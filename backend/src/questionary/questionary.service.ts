@@ -108,12 +108,17 @@ export class QuestionaryService {
     return uniqueAnswer.sort((a, b) => a.length - b.length);
   }
 
-  async updateUser(dto: UpdateUserDto) {
+  async updateUser(dto: UpdateUserDto, file?: Express.Multer.File) {
     const userQuest = await this.questRepository.findOne({
       where: { userId: dto.id },
     });
 
     if (userQuest) {
+      if (file) {
+        const photoPath = await this.fileService.createFile(file);
+        const result = await userQuest.update({ ...dto, photoPath });
+        return result;
+      }
       const result = await userQuest.update({ ...dto });
       return result;
     }
