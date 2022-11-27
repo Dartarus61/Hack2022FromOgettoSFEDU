@@ -12,6 +12,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Quest } from 'src/models/quest.model';
 import { UpdateUserDto } from 'src/questionary/dto/UpdateUser.dto';
+import { CreateLineOfDashboardDto } from './dto/createDash.dto';
 import { CreateQuizDto } from './dto/createQuiz.dto';
 import { CreateQuestDto } from './dto/generateQuest.dto';
 import { OutputDataDto } from './dto/outputData.dto';
@@ -51,5 +52,11 @@ export class QuestionaryController {
   @Get('/dash/:id')
   GetDash(@Param('id') id: number) {
     return this.questService.getDash(id);
+  }
+
+  @ApiOperation({ summary: 'Добавление результата квиза в рейтинг' })
+  @Post('/dash/create')
+  CreateDashLine(@Body() quizDto: CreateLineOfDashboardDto) {
+    return this.questService.createLineOfDashboard(quizDto);
   }
 }

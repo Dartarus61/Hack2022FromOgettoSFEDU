@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Op } from 'sequelize';
 import { FilesService } from 'src/files/files.service';
 import { Dashboard } from 'src/models/dashboard.model';
 import { EOffice, EQuest, Quest } from 'src/models/quest.model';
@@ -128,6 +129,18 @@ export class QuestionaryService {
 
   async createLineOfDashboard(quizData: CreateLineOfDashboardDto) {
     const user = await this.userSerice.getUserById(quizData.userId);
+    if (!user)
+      throw new HttpException('Пользователь не найден', HttpStatus.NOT_FOUND);
+    const dashLine = await this.dashRepository.findOne({
+      where: {
+        username: `${user.questId.surname} ${user.questId.name}`,
+        numberOfQuiz: quizData.typeOfQuiz,
+      },
+    });
+    if (dashLine) {
+      await dashLine.update({ count: quizData.count });
+      return dashLine;
+    }
     return this.dashRepository.create({
       username: `${user.questId.surname} ${user.questId.name}`,
       count: quizData.count,
