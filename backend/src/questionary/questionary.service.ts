@@ -108,9 +108,9 @@ export class QuestionaryService {
     return uniqueAnswer.sort((a, b) => a.length - b.length);
   }
 
-  async updateUser(dto: UpdateUserDto, file?: Express.Multer.File) {
+  async updateUser(dto: CreateQuestDto, file?: Express.Multer.File) {
     const userQuest = await this.questRepository.findOne({
-      where: { userId: dto.id },
+      where: { userId: dto.userId },
     });
 
     if (userQuest) {

@@ -46,7 +46,7 @@ export class QuestionaryController {
   @UseInterceptors(FileInterceptor('file'))
   @Put('/updata')
   ChangeData(
-    @Body() dto: UpdateUserDto,
+    @Body() dto: CreateQuestDto,
     @UploadedFile() file?: Express.Multer.File,
   ) {
     return this.questService.updateUser(dto, file);
