@@ -106,8 +106,7 @@ export class UserService {
 
     let userObject = {
       ...decoded,
-      name: userProfileData.questId.name,
-      surname: userProfileData.questId.surname,
+      ...userProfileData.questId,
       photo: `${process.env.URL_FOR_IMG}${userProfileData.questId.photoPath}`,
     };
     userObject.roles = userObject.roles.map((el) => {
