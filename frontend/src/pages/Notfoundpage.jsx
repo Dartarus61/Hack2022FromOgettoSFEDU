@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import s from "../styles/pages/notfound.module.scss";
 
 const Notfoundpage = () => {
-    return (
-        <div>
-            This page doesn't exist. Go <Link to="/">home</Link>
-        </div>
-    )
-}
+	return (
+		<div className={s.notfound}>
+			<span>404</span>
+		</div>
+	);
+};
 
-export {Notfoundpage};
+export { Notfoundpage };

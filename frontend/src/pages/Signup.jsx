@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import s from "../styles/pages/auth.module.scss";
 

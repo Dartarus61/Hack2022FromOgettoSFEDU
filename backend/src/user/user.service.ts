@@ -102,8 +102,6 @@ export class UserService {
     let userProfileData = await this.getUserById(decoded.id);
     const temp = JSON.stringify(userProfileData);
     userProfileData = JSON.parse(temp);
-    console.log(userProfileData.questId);
-
     let userObject = {
       ...decoded,
       ...userProfileData.questId,
@@ -112,7 +110,6 @@ export class UserService {
     userObject.roles = userObject.roles.map((el) => {
       return el.value;
     });
-    console.log({ user: userObject });
     return userObject;
   }
 

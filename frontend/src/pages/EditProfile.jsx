@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { UploadAndDisplayImage } from "../components/UploadAndDisplayimage";
 import { useAuth } from "../context/useAuth";
 import instance from "../service/api";
 import s from "../styles/pages/auth.module.scss";
@@ -9,17 +8,43 @@ import greyPhoto from "../assets/images/greyPhoto.jpg";
 
 const EditProfile = () => {
 	const navigate = useNavigate();
+	const { signout, user, setUser } = useAuth();
 
-	const [values, setValues] = useState({
-		name: "dwada",
-		surname: "wadawd",
-		middlename: "awdawd",
-		typeOfWork: "УДАЛЕННО",
-		office: "РОСТОВ-НА-ДОНУ",
-		city: "Москва",
-		position: "designer",
-		fact: "Учу дружбе сервера",
-	});
+	const [values, setValues] = useState(
+		!user
+			? {
+					name: "",
+					surname: "",
+					middlename: "",
+					typeOfWork: "",
+					office: "",
+					city: "",
+					position: "",
+					fact: "",
+			  }
+			: {
+					name: user.name,
+					surname: user.surname,
+					middlename: user.middlename,
+					typeOfWork: user.typeOfWork,
+					office: user.office,
+					city: user.city,
+					position: user.position,
+					fact: user.fact,
+			  }
+
+		/*  {
+			name: "dwada",
+			surname: "wadawd",
+			middlename: "awdawd",
+			typeOfWork: "УДАЛЕННО",
+			office: "РОСТОВ-НА-ДОНУ",
+			city: "Москва",
+			position: "designer",
+			fact: "Учу дружбе сервера", 
+		}
+			*/
+	);
 
 	const handleChange = (e) => {
 		setValues({
@@ -27,6 +52,10 @@ const EditProfile = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
+
+	useEffect(() => {
+		console.log(values);
+	}, [values]);
 
 	const [selectedFile, setSelectedFile] = useState();
 	const [preview, setPreview] = useState("");
@@ -63,15 +92,17 @@ const EditProfile = () => {
 		dataArray.append("city", values.city);
 		dataArray.append("position", values.position);
 		dataArray.append("fact", values.fact);
-		dataArray.append("userId", localStorage.getItem("id"));
+		dataArray.append("id", localStorage.getItem("id"));
+		console.log(dataArray);
 		await instance
-			.post("questionary/createquest", dataArray, {
+			.put("questionary/updata", dataArray, {
 				headers: {
 					"Content-Type": "multipart/form-data",
 				},
 			})
 			.then((response) => {
-				console.log(response.data);
+				setUser(values);
+				navigate("/profile");
 			})
 			.catch((error) => {
 				console.log(error);
@@ -83,14 +114,7 @@ const EditProfile = () => {
 			<span className={s.auth_title}>Анкета</span>
 			<form className={s.auth_form} onSubmit={handlesubmit}>
 				<input
-					className={s.auth_form_input}
-					type="text"
-					name="name"
-					placeholder="Имя"
-					value={values.name}
-					onChange={handleChange}
-				/>
-				<input
+					required
 					className={s.auth_form_input}
 					type="text"
 					name="surname"
@@ -99,6 +123,17 @@ const EditProfile = () => {
 					onChange={handleChange}
 				/>
 				<input
+					required
+					className={s.auth_form_input}
+					type="text"
+					name="name"
+					placeholder="Имя"
+					value={values.name}
+					onChange={handleChange}
+				/>
+
+				<input
+					required
 					className={s.auth_form_input}
 					type="text"
 					name="middlename"
@@ -116,10 +151,11 @@ const EditProfile = () => {
 							className={s.form_radio_group_label}
 						>
 							<input
+								required
 								type="radio"
 								name="typeOfWork"
 								id="office"
-								value={values.typeOfWork}
+								value="В ОФИСЕ"
 								onChange={handleChange}
 							/>
 							Офис
@@ -129,11 +165,12 @@ const EditProfile = () => {
 							className={s.form_radio_group_label}
 						>
 							<input
+								required
 								type="radio"
 								name="typeOfWork"
 								id="remote"
 								checked
-								value={values.typeOfWork}
+								value="УДАЛЕННО"
 								onChange={handleChange}
 							/>
 							Удаленка
@@ -143,10 +180,11 @@ const EditProfile = () => {
 							className={s.form_radio_group_label}
 						>
 							<input
+								required
 								type="radio"
 								name="typeOfWork"
 								id="gybrid"
-								value={values.typeOfWork}
+								value="ГИБРИДНЫЙ"
 								onChange={handleChange}
 							/>
 							Гибрид
@@ -154,6 +192,7 @@ const EditProfile = () => {
 					</div>
 				</div>
 				<input
+					required
 					className={s.auth_form_input}
 					type="text"
 					name="city"
@@ -162,6 +201,7 @@ const EditProfile = () => {
 					onChange={handleChange}
 				/>
 				<input
+					required
 					className={s.auth_form_input}
 					type="text"
 					name="office"
@@ -170,6 +210,7 @@ const EditProfile = () => {
 					onChange={handleChange}
 				/>
 				<input
+					required
 					className={s.auth_form_input}
 					name="position"
 					placeholder="Должность"
@@ -195,6 +236,7 @@ const EditProfile = () => {
 				<input
 					type="file"
 					id="userPhoto"
+					name="photo"
 					onChange={onSelectFile}
 					hidden
 				/>
@@ -208,13 +250,13 @@ const EditProfile = () => {
 					<button
 						className={s.action_button}
 						onClick={() => {
-							navigate("/signin");
+							navigate(-1);
 						}}
 					>
-						Создать аккаунт
+						Назад
 					</button>
 					<button type="submit" className={s.action_button}>
-						Войти
+						Сохранить
 					</button>
 				</div>
 			</form>

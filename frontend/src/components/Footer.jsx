@@ -13,7 +13,13 @@ const Header = ({ isGray = false, children }) => {
 	const location = useLocation();
 
 	return (
-		<footer className={s.footer}>
+		<footer
+			className={`${s.footer} ${
+				location.pathname === "/edit" && location.pathname === "/choose"
+					? s.footer_notfixed
+					: ""
+			}`}
+		>
 			<div className={s.footer__container}>
 				<div className={s.footer__offices_block}>
 					<div

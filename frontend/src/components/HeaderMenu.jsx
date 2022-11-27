@@ -22,11 +22,10 @@ const HeaderMenu = ({ s }) => {
 				>
 					Регистрация
 				</button>
-			) : localStorage.getItem("token") &&
-			  !location.pathname === "/profile" && location.pathname === "/" ? (
+			) : localStorage.getItem("token") && location.pathname !== "/profile" ? (
 				<div className={s.header_menu}>
 					<Link to="/profile" className={s.user_menu}>
-						<img src={!userPhoto ? greyPhoto : userPhoto} alt="" />
+						<img src={!user.photo ? greyPhoto : user.photo} alt="" />
 					</Link>
 					<button
 						className={s.header_action}

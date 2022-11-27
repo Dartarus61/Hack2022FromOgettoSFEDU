@@ -1,8 +1,85 @@
 .profile {
+	padding-top: 60px;
+	width: calc(100% - 330px);
+	margin: auto;
 	&_title {
 		font-weight: 700;
 		font-size: 24px;
 		line-height: 18px;
 		color: #000000;
+	}
+	&_photo {
+		width: 138px;
+		height: 138px;
+		object-fit: cover;
+		object-position: center;
+		border: 3px solid #f9dd4b;
+		border-radius: 50%;
+	}
+	&_info {
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 18px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(5, 1fr);
+		gap: 30px;
+		padding-left: 55px;
+		&_text {
+			font-weight: 200;
+			font-size: 20px;
+			line-height: 18px;
+			color: #060606;
+		}
+	}
+	&_initials {
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 30px;
+		max-width: 180px;
+		text-align: center;
+		padding-top: 21px;
+	}
+	&_main_info {
+		display: flex;
+		align-items: center;
+		justify-content: start;
+		flex-direction: column;
+	}
+	&_content {
+		display: flex;
+		padding-top: 100px;
+	}
+	&_button {
+		background: #f9dd4b;
+		border-radius: 15px;
+		padding: 21px 65px;
+		font-weight: 700;
+		font-size: 12px;
+		line-height: 15px;
+
+		text-transform: uppercase;
+
+		color: #000000;
+		&_grey {
+			font-weight: 700;
+			font-size: 12px;
+			line-height: 15px;
+			text-decoration-line: underline;
+			text-transform: uppercase;
+			background: none;
+			padding: 0;
+			color: #a0a0a0;
+		}
+		&_bordered {
+			background: none;
+			border: 1px solid #f9dd4b;
+		}
+	}
+	&_action_list {
+		display: flex;
+		align-items: center;
+		gap: 55px;
+		padding-top: 55px;
 	}
 }

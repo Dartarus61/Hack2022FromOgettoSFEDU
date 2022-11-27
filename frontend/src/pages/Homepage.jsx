@@ -31,7 +31,14 @@ const Homepage = () => {
 							игры на запоминание <br />
 							коллег
 						</p>
-						<CustomButton text="Играть" path="/signin" />
+						<CustomButton
+							text="Играть"
+							path={
+								!localStorage.getItem("token")
+									? "/signin"
+									: "/choose"
+							}
+						/>
 					</div>
 					<img src={elipse} className={s.preview__photo} alt="" />
 				</div>
