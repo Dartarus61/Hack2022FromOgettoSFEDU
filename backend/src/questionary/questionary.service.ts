@@ -75,6 +75,7 @@ export class QuestionaryService {
           options,
           answer: quest.position,
           employee: `${quest.surname} ${quest.name} ${quest.middlename}`,
+          numberOfQuiz: 1,
         };
       }),
     );
