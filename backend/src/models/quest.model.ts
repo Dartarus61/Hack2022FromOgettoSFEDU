@@ -13,6 +13,7 @@ import { User } from './user.model';
 export enum EQuest {
   OFFICE = 'В ОФИСЕ',
   DISTANT = 'УДАЛЕННО',
+  GYBRID = 'ГИБРИД',
 }
 
 export enum EOffice {

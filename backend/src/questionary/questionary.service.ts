@@ -38,7 +38,10 @@ export class QuestionaryService {
     console.log(paramsForSearching);
 
     let countOfUsers;
-    if (paramsForSearching.typeOfWork == EQuest.OFFICE) {
+    if (
+      paramsForSearching.typeOfWork == EQuest.OFFICE ||
+      paramsForSearching.typeOfWork == EQuest.GYBRID
+    ) {
       countOfUsers = await this.userSerice.getCountofUsers(
         paramsForSearching.city,
       );
