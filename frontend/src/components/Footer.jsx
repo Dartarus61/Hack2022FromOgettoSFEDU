@@ -17,46 +17,38 @@ const Header = ({ isGray = false, children }) => {
 			<div className={s.footer__container}>
 				<div className={s.footer__offices_block}>
 					<div
-						className={
-							(s.footer__office_item,
-							s.footer__office_item__tagan)
-						}
+						className={`${s.footer__office_item} ${s.footer__office_item__tagan}`}
 					>
 						<div className={s.footer__office_text}>
 							<p className={s.footer__office_title}>
-								Office in Taganrog
+								Офис в Таганроге
 							</p>
 							<p className={s.footer__office_address}>
-								89B Petrovskaya street, Andreevsky mall
+								Петровская улица, 89Б
 							</p>
 						</div>
 					</div>
 					<div
-						className={
-							(s.footer__office_item,
-							s.footer__office_item__rostov)
-						}
+						className={`${s.footer__office_item} ${s.footer__office_item__rostov}`}
 					>
 						<div className={s.footer__office_text}>
 							<p className={s.footer__office_title}>
-								Office in Rostov_on_Don
+								Офис в Ростове-на-Дону
 							</p>
 							<p className={s.footer__office_address}>
-								6 Nizhnebulvarnaya street, "5 Seas" business
-								centre
+								Нижнебульварная ул., 6
 							</p>
 						</div>
 					</div>
 				</div>
 				<div className={s.footer__contact_block}>
-					<a className={s.footer__number} href="tel:+7 495 587_41_27">
-						+7 495 587_41_27
-					</a>
-					<p className={s.footer__email}>hello@oggettoweb.com</p>
-					<p className={s.footer__copyright}>
-						© Oggetto, 2008–2022. Online stores and selling
-						applications.
-					</p>
+					<span
+						className={s.footer__number}
+						href="tel:+7 495 587_41_27"
+					>
+						Тех. поддержка:
+					</span>
+					<p className={s.footer__email}>service@oggettoweb.com</p>
 				</div>
 			</div>
 		</footer>

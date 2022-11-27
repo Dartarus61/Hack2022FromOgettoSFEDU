@@ -9,7 +9,7 @@ const Signup = () => {
 	const { signup } = useAuth();
 
 	const [values, setValues] = useState({
-		email: "usera@mail.ru",
+		email: "usera@oggettoweb.com",
 		password: "12345",
 		name: "boba",
 		surname: "biba",
@@ -24,11 +24,11 @@ const Signup = () => {
 
 	const handlesubmit = (e) => {
 		e.preventDefault();
-		signup(values, () => navigate("/profile", { replace: true }));
+		signup(values, () => navigate("/edit", { replace: true }));
 	};
 	return (
 		<div className={s.auth}>
-			<span className={s.auth_title}>Авторизация</span>
+			<span className={s.auth_title}>Регистрация</span>
 			<form className={s.auth_form} onSubmit={handlesubmit}>
 				<input
 					className={s.auth_form_input}
@@ -51,7 +51,7 @@ const Signup = () => {
 					type="text"
 					name="name"
 					placeholder="Имя"
-					value={values.email}
+					value={values.name}
 					onChange={handleChange}
 				/>
 				<input
@@ -59,7 +59,7 @@ const Signup = () => {
 					type="text"
 					name="surname"
 					placeholder="Фамилия"
-					value={values.password}
+					value={values.surname}
 					onChange={handleChange}
 				/>
 				<div className={s.auth_form_actions}>
@@ -69,10 +69,10 @@ const Signup = () => {
 							navigate("/signin");
 						}}
 					>
-						Создать аккаунт
+						Войти
 					</button>
 					<button type="submit" className={s.action_button}>
-						Войти
+						Зарегистрироваться
 					</button>
 				</div>
 			</form>

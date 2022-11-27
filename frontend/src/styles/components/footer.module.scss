@@ -1,7 +1,5 @@
 .footer {
-	background-color: #000000;
 	font-family: Montserrat;
-	color: #ffffff;
 	padding: 20px 0;
 	position: fixed;
 	width: 100%;
@@ -24,30 +22,18 @@
 	&__tagan {
 		display: flex;
 		align-items: center;
-		&::before {
-			content: "";
-			display: block;
-			position: relative;
-			width: 48px;
-			height: 48px;
-			margin-right: 26px;
-			background-image: url("../../assets/images/svg/tagan-office.svg");
-		}
 	}
 
 	&__rostov {
 		display: flex;
 		align-items: center;
-		&::before {
-			content: "";
-			display: block;
-			position: relative;
-			width: 48px;
-			height: 48px;
-			margin-right: 26px;
-			background-image: url("../../assets/images/svg/rostov-office.svg");
-		}
 	}
+}
+
+.footer__offices_block {
+	display: flex;
+	align-items: center;
+	gap: 50px;
 }
 
 .footer__office_title {

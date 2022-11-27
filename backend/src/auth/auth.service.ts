@@ -63,6 +63,7 @@ export class AuthService {
         email: user.email,
         isActivated: user.isActivated,
         roles: user.roles,
+        firstIn: user.firstIn
       },
     };
   }
@@ -84,6 +85,7 @@ export class AuthService {
 
   async login(userDto: LoginDto) {
     const user = await this.validateUser(userDto);
+    if (user.questId) await user.update({firstIn: true})
     return this.generateToken(user);
   }
 

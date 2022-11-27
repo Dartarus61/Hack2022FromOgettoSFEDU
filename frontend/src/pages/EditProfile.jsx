@@ -5,7 +5,7 @@ import { useAuth } from "../context/useAuth";
 import instance from "../service/api";
 import s from "../styles/pages/auth.module.scss";
 
-import greyPhoto from "../assets/images/greyPhoto.jpg"
+import greyPhoto from "../assets/images/greyPhoto.jpg";
 
 const EditProfile = () => {
 	const navigate = useNavigate();
@@ -17,6 +17,7 @@ const EditProfile = () => {
 		typeOfWork: "УДАЛЕННО",
 		office: "РОСТОВ-НА-ДОНУ",
 		city: "Москва",
+		position: "designer",
 		fact: "Учу дружбе сервера",
 	});
 
@@ -53,14 +54,16 @@ const EditProfile = () => {
 	const handlesubmit = async (e) => {
 		e.preventDefault();
 		const dataArray = new FormData();
-		dataArray.append("filedata", selectedFile);
+		dataArray.append("file", selectedFile);
 		dataArray.append("name", values.name);
 		dataArray.append("surname", values.surname);
 		dataArray.append("middlename", values.middlename);
 		dataArray.append("typeOfWork", values.typeOfWork);
 		dataArray.append("office", values.office);
 		dataArray.append("city", values.city);
+		dataArray.append("position", values.position);
 		dataArray.append("fact", values.fact);
+		dataArray.append("userId", localStorage.getItem("id"));
 		await instance
 			.post("questionary/createquest", dataArray, {
 				headers: {
@@ -84,7 +87,7 @@ const EditProfile = () => {
 					type="text"
 					name="name"
 					placeholder="Имя"
-					value={values.email}
+					value={values.name}
 					onChange={handleChange}
 				/>
 				<input
@@ -92,7 +95,7 @@ const EditProfile = () => {
 					type="text"
 					name="surname"
 					placeholder="Фамилия"
-					value={values.password}
+					value={values.surname}
 					onChange={handleChange}
 				/>
 				<input
@@ -100,7 +103,7 @@ const EditProfile = () => {
 					type="text"
 					name="middlename"
 					placeholder="Отчество"
-					value={values.email}
+					value={values.middlename}
 					onChange={handleChange}
 				/>
 				<div className={s.form_radio_group}>
@@ -116,8 +119,7 @@ const EditProfile = () => {
 								type="radio"
 								name="typeOfWork"
 								id="office"
-								placeholder="Офис"
-								value={values.email}
+								value={values.typeOfWork}
 								onChange={handleChange}
 							/>
 							Офис
@@ -130,8 +132,8 @@ const EditProfile = () => {
 								type="radio"
 								name="typeOfWork"
 								id="remote"
-								placeholder="Офис"
-								value={values.email}
+								checked
+								value={values.typeOfWork}
 								onChange={handleChange}
 							/>
 							Удаленка
@@ -144,8 +146,7 @@ const EditProfile = () => {
 								type="radio"
 								name="typeOfWork"
 								id="gybrid"
-								placeholder="Офис"
-								value={values.email}
+								value={values.typeOfWork}
 								onChange={handleChange}
 							/>
 							Гибрид
@@ -157,7 +158,7 @@ const EditProfile = () => {
 					type="text"
 					name="city"
 					placeholder="Город проживания:"
-					value={values.email}
+					value={values.city}
 					onChange={handleChange}
 				/>
 				<input
@@ -165,14 +166,14 @@ const EditProfile = () => {
 					type="text"
 					name="office"
 					placeholder="Офис"
-					value={values.email}
+					value={values.office}
 					onChange={handleChange}
 				/>
 				<input
 					className={s.auth_form_input}
 					name="position"
 					placeholder="Должность"
-					value={values.email}
+					value={values.position}
 					onChange={handleChange}
 				/>
 
@@ -181,13 +182,28 @@ const EditProfile = () => {
 					type="text"
 					name="fact"
 					placeholder="Факты о вашей работе: "
-					value={values.email}
+					value={values.fact}
 					onChange={handleChange}
 				></textarea>
 
-				<img width="200px" height="200px" src={!preview ? greyPhoto : preview} className={s.form_upload_photo}/>
-				<input type="file" id="userPhoto" onChange={onSelectFile} hidden/>
-				<label htmlFor="userPhoto" className={s.form_upload_photo_label}>Выбрать фото</label>
+				<img
+					width="200px"
+					height="200px"
+					src={!preview ? greyPhoto : preview}
+					className={s.form_upload_photo}
+				/>
+				<input
+					type="file"
+					id="userPhoto"
+					onChange={onSelectFile}
+					hidden
+				/>
+				<label
+					htmlFor="userPhoto"
+					className={s.form_upload_photo_label}
+				>
+					Выбрать фото
+				</label>
 				<div className={s.auth_form_actions}>
 					<button
 						className={s.action_button}

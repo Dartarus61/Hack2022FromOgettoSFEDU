@@ -18,12 +18,12 @@ const HeaderMenu = ({ s }) => {
 			{location.pathname === "/" && !localStorage.getItem("token") ? (
 				<button
 					className={s.header_action}
-					onClick={() => navigate("/signin")}
+					onClick={() => navigate("/signup")}
 				>
 					Регистрация
 				</button>
 			) : localStorage.getItem("token") &&
-			  !location.pathname === "/profile" ? (
+			  !location.pathname === "/profile" && location.pathname === "/" ? (
 				<div className={s.header_menu}>
 					<Link to="/profile" className={s.user_menu}>
 						<img src={!userPhoto ? greyPhoto : userPhoto} alt="" />

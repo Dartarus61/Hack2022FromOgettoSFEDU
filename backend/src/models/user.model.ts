@@ -45,6 +45,9 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: true })
   switchKey: string;
 
+  @Column({ type: DataType.BOOLEAN, defaultValue: false })
+  firstIn: boolean;
+
   @ApiProperty({ example: '[USER]', description: 'Роли пользователя' })
   @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];

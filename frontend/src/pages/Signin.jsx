@@ -7,7 +7,7 @@ import CustomButton from "../components/CustomButton";
 
 const Signin = () => {
 	const [values, setValues] = useState({
-		email: "usera@mail.ru",
+		email: "usera@oggettoweb.com",
 		password: "12345",
 	});
 

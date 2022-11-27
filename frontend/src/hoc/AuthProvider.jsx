@@ -39,9 +39,16 @@ export const AuthProvider = ({ children }) => {
 		await api
 			.post("/auth/login", authData)
 			.then(({ data }) => {
+				console.log(authData);
 				if (!!data.user.isActivated) {
 					localStorage.setItem("token", data.token);
+					localStorage.setItem("id", data.user.id);
 					loadSingleProfile(localStorage.getItem("token"));
+					console.log();
+					if (!data.user.firstIn) {
+						navigate("/edit");
+						return;
+					}
 					cb();
 				} else {
 					localStorage.clear();
@@ -51,6 +58,7 @@ export const AuthProvider = ({ children }) => {
 			})
 			.catch((e) => {
 				console.error(e);
+				console.log(authData);
 			});
 	};
 	const signup = async (newUser, cb) => {
@@ -58,8 +66,9 @@ export const AuthProvider = ({ children }) => {
 			.post("/auth/registration", newUser)
 			.then(({ data }) => {
 				localStorage.setItem("token", data.token);
+				localStorage.setItem("id", data.user.id);
 				setUser(newUser.email);
-				navigate("/validate");
+				cb();
 			})
 			.catch((e) => {
 				console.error(e);
