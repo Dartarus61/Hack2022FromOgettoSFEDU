@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   Put,
   UploadedFile,
@@ -44,5 +45,11 @@ export class QuestionaryController {
   @Put('/updata')
   ChangeData(@Body() dto: UpdateUserDto) {
     return this.questService.updateUser(dto);
+  }
+
+  @ApiOperation({ summary: 'Получение списка лидеров' })
+  @Get('/dash/:id')
+  GetDash(@Param('id') id: number) {
+    return this.questService.getDash(id);
   }
 }

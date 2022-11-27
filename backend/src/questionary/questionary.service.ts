@@ -1,9 +1,11 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { FilesService } from 'src/files/files.service';
+import { Dashboard } from 'src/models/dashboard.model';
 import { EOffice, EQuest, Quest } from 'src/models/quest.model';
 import { User } from 'src/models/user.model';
 import { UserService } from 'src/user/user.service';
+import { CreateLineOfDashboardDto } from './dto/createDash.dto';
 import { CreateQuizDto } from './dto/createQuiz.dto';
 import { CreateQuestDto } from './dto/generateQuest.dto';
 import { UpdateUserDto } from './dto/UpdateUser.dto';
@@ -14,6 +16,7 @@ export class QuestionaryService {
     private userSerice: UserService,
     private fileService: FilesService,
     @InjectModel(Quest) private questRepository: typeof Quest,
+    @InjectModel(Dashboard) private dashRepository: typeof Dashboard,
   ) {}
 
   async createQuest(questData: CreateQuestDto, file: Express.Multer.File) {
@@ -113,6 +116,23 @@ export class QuestionaryService {
       'Анкета пользователя не найдена',
       HttpStatus.NOT_FOUND,
     );
+  }
+
+  async getDash(quizId: number) {
+    return this.dashRepository.findAll({
+      where: { numberOfQuiz: quizId },
+      limit: 25,
+      order: [['count', 'DESC']],
+    });
+  }
+
+  async createLineOfDashboard(quizData: CreateLineOfDashboardDto) {
+    const user = await this.userSerice.getUserById(quizData.userId);
+    return this.dashRepository.create({
+      username: `${user.questId.surname} ${user.questId.name}`,
+      count: quizData.count,
+      numberOfQuiz: quizData.typeOfQuiz,
+    });
   }
 }
 

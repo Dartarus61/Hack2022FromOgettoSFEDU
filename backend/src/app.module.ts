@@ -15,6 +15,7 @@ import { QuestionaryModule } from './questionary/questionary.module';
 import { SendfileModule } from './sendfile/sendfile.module';
 import { FilesModule } from './files/files.module';
 import { Quest } from './models/quest.model';
+import { Dashboard } from './models/dashboard.model';
 
 @Module({
   imports: [
@@ -45,7 +46,7 @@ import { Quest } from './models/quest.model';
       username: process.env.DB_USER || 'postgres',
       password: process.env.DB_PASSWORD || 'postgres',
       database: process.env.DB_NAME || 'ogetto',
-      models: [User, Role, UserRoles, Quest],
+      models: [User, Role, UserRoles, Quest, Dashboard],
       autoLoadModels: true,
       /* sync: { force: true }, */
     }),
